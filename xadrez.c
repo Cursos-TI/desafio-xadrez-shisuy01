@@ -5,7 +5,7 @@
         int option;
 
         // Desafio para Novato 
-        // Menu de comando das Peças 
+        // Menu de comando das Peças
         printf("### MateCheck ###\n\n");
         printf("Escolha a peça a ser movida: \n");
         printf("1. Bispo\n");
