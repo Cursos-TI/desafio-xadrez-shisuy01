@@ -53,7 +53,7 @@
             break;
         case 4: // Cavalo Nível Aventureiro
 
-            printf("\n###Movimentando Cavalo###\n");
+            printf("\n### Movimentando Cavalo ###\n");
 
             printf("Movimento: 2 para Baixo e 1 para Esquerda (L)\n\n");
 
