@@ -32,7 +32,7 @@
 
             for (int i = 0; i < 5; i++) 
             {    
-                printf("Diagonal\n");
+                printf("Diagonal\n", i);
             }
             break;
 
