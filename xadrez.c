@@ -1,113 +1,92 @@
 #include <stdio.h>
 
+/* ==== NÍVEL MESTRE ==== */
 
-    int main() {
+/* Torre - recursiva */
+void moverTorreRec(int casas) {
+    if (casas == 0) return;
 
-        int option;
+    printf("Direita\n");
+    moverTorreRec(casas - 1);
+}
 
-        // Desafio para Novato 
-        // Menu de comando das Peças 
-        printf("### MateCheck ###\n\n");
-        printf("Escolha a peça a ser movida: \n");
-        printf("1. Bispo\n");
-        printf("2. Torre\n");
-        printf("3. Rainha\n");
-        printf("4. Cavalo\n");
-        scanf("%d", &option);
+/* Rainha - recursiva */
+void moverRainhaRec(int casas) {
+    if (casas == 0) return;
 
-        // Código para identificar apenas as opções 1, 2, 3 e 4
+    printf("Cima\n");
+    printf("Direita\n");
+    moverRainhaRec(casas - 1);
+}
 
-        if (option < 1 || option > 4) {
-            printf("Opção Inválida\n");
-            return 0;
+/* Bispo - recursivo + loops aninhados */
+void moverBispoRec(int casas) {
+    if (casas == 0) return;
+
+    for (int g = 1; g <= 1; g++) {
+        printf("Cima\n");
+
+        for (int h = 1; h <= 1; h++) {
+            printf("Direita\n");
         }
-
-        // Código para a movimentação das peças 
-    
-        switch (option)
-        {
-        case 1: // Bispo
-
-            printf("\nMovimentando Bispo\n");
-
-            for (int i = 0; i < 5; i++) 
-            {    
-                printf("Diagonal\n", i);
-            }
-            break;
-
-        case 2: // Torre
-            printf("\nMovimentando Torre\n");
-
-            for (int i = 0; i < 5; i++) 
-            {
-                printf("\nDireita", i);
-            }
-            break;
-        case 3: // Rainha
-    
-            for (int i = 0; i < 8; i++) 
-            {
-                printf("\nEsquerda", i);
-            }
-            break;
-        case 4: // Cavalo Nível Aventureiro
-
-            printf("\n### Movimentando Cavalo ###\n");
-
-            printf("Movimento: 2 para Baixo e 1 para Esquerda (L)\n\n");
-
-            // Loop externo: FOR >>> para baixo
-           for (int i = 1; i <= 2; i++)
-           {
-            printf("Baixo", i);
-
-                // Loop interno só roda na última descida 
-                if (i == 2) {
-                    int j = 1;
-                    while (j <= 1) {
-                        printf("\nEsquerda\n", j);
-                        j++;
-                    }
-                }
-
-                printf("\n");
-           }
-
-           
-            break;
-
-        default:
-            break;
-        }
-
-         return 0;
     }
-    
 
-    
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+    moverBispoRec(casas - 1);
+}
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+/* Cavalo - loops complexos */
+void moverCavaloMestre() {
+    for (int i = 1; i <= 2; i++) {
+        printf("Cima\n");
+        if (i == 1) continue;
+    }
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
+    for (int j = 1; j <= 1; j++) {
+        printf("Direita\n");
+        break;
+    }
+}
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
+int main() {
 
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
+    int option;
+    int casas = 3;
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+    printf("### MateCheck ###\n\n");
+    printf("Escolha a peça a ser movida: \n");
+    printf("1. Bispo\n");
+    printf("2. Torre\n");
+    printf("3. Rainha\n");
+    printf("4. Cavalo\n");
+    scanf("%d", &option);
 
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+    if (option < 1 || option > 4) {
+        printf("Opção Inválida\n");
+        return 0;
+    }
 
-  
+    switch (option) {
 
+    case 1: // Bispo
+        printf("\nMovimentando Bispo\n\n");
+        moverBispoRec(casas);
+        break;
+
+    case 2: // Torre
+        printf("\nMovimentando Torre\n\n");
+        moverTorreRec(casas);
+        break;
+
+    case 3: // Rainha
+        printf("\nMovimentando Rainha\n\n");
+        moverRainhaRec(casas);
+        break;
+
+    case 4: // Cavalo
+        printf("\nMovimentando Cavalo\n\n");
+        moverCavaloMestre();
+        break;
+    }
+
+    return 0;
+}
